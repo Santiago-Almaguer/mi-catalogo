@@ -1,0 +1,15 @@
+.vistas{
+    display: flex;
+    background-color: #00adb5;
+    justify-content: space-evenly;
+    height: 50px;
+    align-items: center;
+
+}
+
+.subtemas{
+    border:  #aad8d3 5px solid ;
+    padding: 10px 25%;
+    color: white; 
+    font-size: 20px; 
+}
