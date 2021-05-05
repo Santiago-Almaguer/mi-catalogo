@@ -1,0 +1,36 @@
+
+    
+
+
+<ng-container *ngFor='let auto of autos'>
+
+    <div class="list">
+    
+        <div class="icon" (click)="open(content)" (click)="onSelect(auto)" ><i class="far fa-eye" ></i> </div>
+        <div class="item"> {{auto.marca}}  {{auto.submarca}}  / {{auto.modelo}}</div>
+
+    </div>  
+</ng-container>
+
+
+
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Auto seleccionado</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      
+        <div class=" item">
+            {{autoSelecionado.descripcion}} - {{autoSelecionado.fecha_registro}} 
+        </div>
+      
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cerrar</button>
+    </div>
+  </ng-template>

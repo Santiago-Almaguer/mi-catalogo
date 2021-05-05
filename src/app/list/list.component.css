@@ -1,0 +1,18 @@
+.list{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 100px;
+    align-content: center;
+    background-color: rgb(167, 228, 192);
+    padding: 5px 3px;
+    font-weight: bold;
+}
+.icon{
+    font-size: 30px;
+    align-items: center;
+    margin-left: 15px;
+}
+.item{
+    font-size: 20px;
+    margin-right: 15px;
+}

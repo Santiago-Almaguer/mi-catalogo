@@ -26,10 +26,12 @@ html {
     background-image: url(../../img/pixlr-bg-result.png);
     height: 64px;
     width: 64px;
+    margin-left: 10px;
 }
 
 .segundoLogo{
     background-image: url(../../img/GitHub-Mark-64px.png);
     height: 64px;
     width: 64px;
+    margin-right: 10px;
 }

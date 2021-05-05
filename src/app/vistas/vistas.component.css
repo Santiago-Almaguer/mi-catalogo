@@ -8,8 +8,9 @@
 }
 
 .subtemas{
-    border:  #aad8d3 5px solid ;
+    
     padding: 10px 25%;
+     margin: auto;
     color: white; 
     font-size: 20px; 
 }
