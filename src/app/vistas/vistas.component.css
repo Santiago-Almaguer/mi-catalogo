@@ -4,7 +4,7 @@
     justify-content: space-evenly;
     height: 50px;
     align-items: center;
-
+    font-weight: bold;
 }
 
 .subtemas{
@@ -13,4 +13,13 @@
      margin: auto;
     color: white; 
     font-size: 20px; 
+}
+
+.subtemas:hover{
+    background-color:  #019ea7;
+}
+
+.active{
+    background-color:  #019ea7;
+    color: rgb(0, 0, 0);
 }
