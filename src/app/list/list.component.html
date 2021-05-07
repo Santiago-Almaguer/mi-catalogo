@@ -2,18 +2,31 @@
     
 
 
-<ng-container *ngFor='let auto of autos'>
+
+<ng-container *ngFor='let auto of autos | slice: (page-1) * pageSize : page * pageSize '>
 
     <div class="list">
     
         <div class="icon" (click)="open(content)" (click)="onSelect(auto)" ><i class="far fa-eye" ></i> </div>
-        <div class="item"> {{auto.marca}}  {{auto.submarca}}  / {{auto.modelo}}</div>
+        <div class="item"> {{auto.marca}}  {{auto.submarca}}  / {{auto.modelos}}</div>
 
     </div>  
 </ng-container>
 
 
+<ngb-pagination [collectionSize]="120" 
+[(page)]="page" 
+aria-label="Default pagination "
+ [pageSize]="pageSize"
+[collectionSize]="autos.length" 
+class="d-flex justify-content-center" 
+[maxSize]="5"
+[rotate]="true"
+[ellipses]="false"
+[boundaryLinks]="true" >
+</ngb-pagination>
 
+ <br>
 
 
 <ng-template #content let-modal>
@@ -26,7 +39,10 @@
     <div class="modal-body">
       
         <div class=" item">
-            {{autoSelecionado.descripcion}} - {{autoSelecionado.fecha_registro}} 
+         Marca: {{autoSelecionado.marca}} <br>
+          Modelos: {{autoSelecionado.modelos}}<br>
+          Ocupantes: {{autoSelecionado.Ocupantes}}<br>
+          Descripcion: {{autoSelecionado.descripcion}} <br>
         </div>
       
     </div>
@@ -34,3 +50,8 @@
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cerrar</button>
     </div>
   </ng-template>
+
+
+
+
+

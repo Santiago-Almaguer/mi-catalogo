@@ -1,31 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { AUTOMOVILES } from '../data';
+
 import { Automovil } from '../models';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-
+import { AutosService } from '../services/autos.service';
+//import { NgbdPaginationBasic} from '../pagination/pagination.component';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
+
+
 export class ListComponent implements OnInit {
- 
+  
+  page = 1;
+  pageSize= 10;
   autos: Automovil[] = [];
   autoSelecionado: Automovil ={
     marca: '',
     submarca: '',
-    modelo: 0,
+    modelos: [],
     descripcion: '',
-    fecha_registro: new Date()
+     Ocupantes : 0
 };
 
 
   closeResult = '';
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private autosService: AutosService) { }
 
   ngOnInit(): void {
-    this.autos = AUTOMOVILES;
+    this.autosService.getAutos().subscribe((response)=>{
+      this.autos = response.data;
+    })
+    
   }
+
+  
 
   onSelect(auto: Automovil){
     this.autoSelecionado = auto;
