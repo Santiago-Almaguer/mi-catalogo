@@ -14,15 +14,9 @@ import { AutosService } from '../services/autos.service';
 export class ListComponent implements OnInit {
   
   page = 1;
-  pageSize= 10;
+  pageSize= 8;
   autos: Automovil[] = [];
-  autoSelecionado: Automovil ={
-    marca: '',
-    submarca: '',
-    modelos: [],
-    descripcion: '',
-     Ocupantes : 0
-};
+  autoSelecionado: Automovil ={} as Automovil;
 
 
   closeResult = '';

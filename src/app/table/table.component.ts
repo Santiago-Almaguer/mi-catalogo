@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AUTOMOVILES } from '../data';
 import { Automovil } from '../models';
 import { AutosService } from '../services/autos.service';
+import { ModalAgregarEditarComponent } from '../modal-agregar-editar/modal-agregar-editar.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalEliminarComponent } from '../modal-eliminar/modal-eliminar.component';
 
 
 
@@ -16,7 +19,7 @@ export class TableComponent implements OnInit {
   page = 1;
   pageSize= 10;
   
-  constructor(private autosService: AutosService) { }
+  constructor(private autosService: AutosService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.autosService.getAutos().subscribe((response)=>{
@@ -24,5 +27,54 @@ export class TableComponent implements OnInit {
     })
   }
 
+  openModalEditar(auto: Automovil){
+    const modalRef = this.modalService.open(ModalAgregarEditarComponent,{centered: true});
+    modalRef.componentInstance.auto = auto;
+    modalRef.componentInstance.accion = 'Editar';
+
+    modalRef.result.then(
+
+      (auto)=>{
+        this.autosService.updateAutos(auto).subscribe(response=> console.log(response));
+      },
+      (reason)=>{
+        console.log(reason);
+      }
+    )
+  }
+  
+  openModalAgregar(){
+    const modalRef = this.modalService.open(ModalAgregarEditarComponent,{centered: true});
+    
+    modalRef.componentInstance.accion = 'Agregar';
+
+    modalRef.result.then(
+
+      (auto)=>{
+        this.autosService.createAutos(auto).subscribe(response=> console.log(response));
+      },
+      (reason)=>{
+        console.log(reason);
+      }
+    )
+
+  }
+
+  openModalEliminar(auto: Automovil){
+    const modalRef = this.modalService.open(ModalEliminarComponent,{centered: true});
+    modalRef.componentInstance.auto = auto;
+
+    modalRef.result.then(
+
+      (autoTemp)=>{
+        this.autosService.deleteAutos(autoTemp).subscribe(response=> console.log(response));
+      },
+      (reason)=>{
+        console.log(reason);
+      }
+    )
+
+    
+  }
 }
 

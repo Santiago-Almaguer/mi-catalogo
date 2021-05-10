@@ -1,0 +1,77 @@
+
+
+    <div class="modal-header">
+      <h4 class="modal-title" id="activeModal">{{accion}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+   
+      
+      <form #formAutos = "ngForm" (ngSubmit)='onSubmit()'>
+        
+        <div class="modal-body">
+
+          
+              <div class="form-group">
+                  <label for="Marca">Marca:</label>
+                  <input type="text" class="form-control" id="Marca" placeholder="Marca" required [(ngModel)] = auto.marca name='marca'
+                  #marca = 'ngModel' minlength='4'>
+              </div>
+
+              <div *ngIf = 'marca.invalid && (marca.dirty || marca.touched)' >             
+                <div *ngIf='marca.errors?.minlength' class="alert alert-danger"> el nombre de la marca tener minimo 4 caracteres</div>
+                <div *ngIf='marca.errors?.required'class="alert alert-danger"> se requiere una marca</div>
+              </div>
+
+            <div class="form-group">
+              <label for="Submarca">Submarca:</label>
+              <input type="text" class="form-control" id="Submarca" placeholder="Submarca" required [(ngModel)] = auto.submarca name='Submarca'
+              #submarca = 'ngModel' minlength='4'>
+            </div>
+            <div *ngIf = 'submarca.invalid && (submarca.dirty || submarca.touched)'>             
+              <div *ngIf='submarca.errors?.minlength'class="alert alert-danger"> el nombre de la submarca tener minimo 4 caracteres</div>
+              <div *ngIf='submarca.errors?.required'class="alert alert-danger"> se requiere una submarca</div>
+            </div>
+
+            <div class="form-group">
+                <label for="Modelos">Modelos: (para seleccionar diferentes años mantenga precionada la tecla CTRL en Windows o cmd en MAC)</label>
+                <select  multiple  class="form-control" id="Modelos" placeholder="Modelos" [(ngModel)] = auto.modelos name='modelos' #selectModelos (change)="value()" >
+                  <option>2000</option>
+                  <option>2001</option>
+                  <option>2002</option>
+                  <option>2003</option>
+                  <option>2004</option>
+                  <option>2005</option>
+                  <option>2006</option>
+                  <option>2007</option>
+                  <option>2008</option>
+                  <option>2009</option>
+                  <option>2010</option>
+                  <option>2011</option>
+                  <option>2012</option>
+                  <option>2013</option>
+                  <option>2014</option>
+                  <option>2015</option>
+                  <option>2016</option>
+                  <option>2017</option>
+                  <option>2018</option>
+                  <option>2019</option>
+                  <option>2020</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="Descripcion">Descripcion:</label>
+                <input type="text" class="form-control" id="Descripcion" placeholder="Descripcion" [(ngModel)] = auto.descripcion name='descripcion'>
+              </div>
+
+            </div>
+
+        <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-dark" [disabled]='!formAutos.form.valid'>Guardar</button>
+        </div>
+
+      </form>
+            

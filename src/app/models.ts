@@ -4,5 +4,5 @@ export interface Automovil {
     modelos: number[];
     descripcion: string;  
     Ocupantes: number;
-
+    _id: number
 }
