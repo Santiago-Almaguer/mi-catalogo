@@ -2,6 +2,15 @@
 
 <button type="button" class="btn btn-dark" style="margin:20px 30px;" (click)='openModalAgregar()'>Agregar <i class="fa fa-plus"></i></button>
 
+<div class="col-auto">
+ 
+  <div class="input-group mb-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text"><i class="fas fa-search"></i></div>
+    </div>
+    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Buscar" [(ngModel)]='searchText' autocomplete="off">
+  </div>
+</div>
 
 <table class="table table-striped">
     <thead>
@@ -23,8 +32,8 @@
         </th>
         
       </tr>
-    <tr *ngFor="let auto of autos | slice: (page-1) * pageSize : page * pageSize; index as i ">
-      <th scope="row">{{ i + 1 }}</th>    
+    <tr     *ngFor="let auto of autos  | slice: (page-1) * pageSize : page * pageSize; index as i  " >
+      <td scope="row">{{ i + 1 }}</td>    
       <td> {{auto.marca}} </td>
       <td>{{ auto.submarca}}</td>
       <td>{{ auto.modelos | formatoModelos }}</td>      

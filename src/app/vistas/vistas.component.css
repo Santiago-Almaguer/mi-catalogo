@@ -9,10 +9,11 @@
 
 .subtemas{
     
-    padding: 10px 25%;
-    
+    width: 33%;
     color: white; 
     font-size: 20px; 
+    text-align: center;
+
 }
 
 .subtemas:hover{

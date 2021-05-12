@@ -18,6 +18,7 @@ export class TableComponent implements OnInit {
   autos= AUTOMOVILES;
   page!: number;
   pageSize!: number;
+  searchText: any;
 
   displayProgressBar: boolean = false;
   
@@ -32,7 +33,7 @@ export class TableComponent implements OnInit {
       setTimeout(() => {
         this.displayProgressBar = false;
       this.autos = response.data;
-      }, 1000);
+      }, 500);
       
 
     })
