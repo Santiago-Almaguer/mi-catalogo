@@ -3,7 +3,6 @@
 <button type="button" class="btn btn-dark" style="margin:20px 30px;" (click)='openModalAgregar()'>Agregar <i class="fa fa-plus"></i></button>
 
 
-
 <table class="table table-striped">
     <thead>
     <tr  >
@@ -17,12 +16,19 @@
     </tr>
     </thead>
     <tbody>
+
+      <tr *ngIf='displayProgressBar'>
+        <th colspan="7">
+          <ngb-progressbar [value]="100" type="dark" [striped]='true'  [animated]='true'></ngb-progressbar>
+        </th>
+        
+      </tr>
     <tr *ngFor="let auto of autos | slice: (page-1) * pageSize : page * pageSize; index as i ">
       <th scope="row">{{ i + 1 }}</th>    
       <td> {{auto.marca}} </td>
       <td>{{ auto.submarca}}</td>
-      <td>{{ auto.modelos }}</td>      
-      <td>{{ auto.descripcion }}</td>
+      <td>{{ auto.modelos | formatoModelos }}</td>      
+      <td>{{ auto.descripcion | lowercase }}</td>
       <td class="sobre" (click)='openModalEditar(auto)'><i class="far fa-edit "></i></td>
       <td class="sobre"  (click)='openModalEliminar(auto)'><i class="far fa-trash-alt"></i></td>
       

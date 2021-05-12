@@ -14,6 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ModalAgregarEditarComponent } from './modal-agregar-editar/modal-agregar-editar.component';
 import { FormsModule }   from '@angular/forms';
 import { ModalEliminarComponent } from './modal-eliminar/modal-eliminar.component';
+import { FormatoModelosPipe } from './pipes/formato-modelos.pipe';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ModalEliminarComponent } from './modal-eliminar/modal-eliminar.componen
     PageNotFoundComponent,
     ModalAgregarEditarComponent,
     ModalEliminarComponent,
+    FormatoModelosPipe,
     
   ],
   imports: [

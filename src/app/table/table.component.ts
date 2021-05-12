@@ -16,14 +16,25 @@ import { ModalEliminarComponent } from '../modal-eliminar/modal-eliminar.compone
 export class TableComponent implements OnInit {
 
   autos= AUTOMOVILES;
-  page = 1;
-  pageSize= 10;
+  page!: number;
+  pageSize!: number;
+
+  displayProgressBar: boolean = false;
   
   constructor(private autosService: AutosService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.displayProgressBar = true;
+    this.page = 1;
+    this.pageSize = 10
     this.autosService.getAutos().subscribe((response)=>{
+
+      setTimeout(() => {
+        this.displayProgressBar = false;
       this.autos = response.data;
+      }, 1000);
+      
+
     })
   }
 
@@ -36,6 +47,7 @@ export class TableComponent implements OnInit {
 
       (auto)=>{
         this.autosService.updateAutos(auto).subscribe(response=> console.log(response));
+        this.ngOnInit();
       },
       (reason)=>{
         console.log(reason);
@@ -52,6 +64,7 @@ export class TableComponent implements OnInit {
 
       (auto)=>{
         this.autosService.createAutos(auto).subscribe(response=> console.log(response));
+        this.ngOnInit();
       },
       (reason)=>{
         console.log(reason);
@@ -68,6 +81,7 @@ export class TableComponent implements OnInit {
 
       (autoTemp)=>{
         this.autosService.deleteAutos(autoTemp).subscribe(response=> console.log(response));
+        this.ngOnInit();
       },
       (reason)=>{
         console.log(reason);
